@@ -1,5 +1,7 @@
 package ru.nyashinqa.api;
 
+import org.apache.commons.collections4.map.LinkedMap;
+import org.apache.commons.collections4.map.MultiKeyMap;
 import ru.nyashinqa.enums.Month;
 
 import java.util.HashMap;
@@ -73,5 +75,28 @@ public class ZodiacSign {
         zodiacAndStone.put(PISCES.getNameZodiac(), HYACINTH.getNameStone());
 
         return zodiacAndStone.get(zodiac);
+    }
+
+    public String compatibilityManZodiacAndWomenZodiac(String zodiacMan, String zodiacWomen) {
+
+        MultiKeyMap<String, String> multiKeyMap = MultiKeyMap.multiKeyMap(new LinkedMap<>());
+        multiKeyMap.put(ARIES.getNameZodiac(), ARIES.getNameZodiac(), "Оба Овна могут находить общий язык благодаря их энергичности и страсти. Совместимость: 80%");
+        multiKeyMap.put(ARIES.getNameZodiac(), TAURUS.getNameZodiac(), "Эти два знака могут привносить в отношения страсть и уверенность, но иногда могут возникать конфликты из-за упрямства Тельца. Совместимость: 60%");
+        multiKeyMap.put(ARIES.getNameZodiac(), GEMINI.getNameZodiac(), "Овен и Близнецы оба ценят разнообразие и разговоры, их отношения могут быть интересными и динамичными.. Совместимость: 75%");
+        multiKeyMap.put(ARIES.getNameZodiac(), CANCER.getNameZodiac(), "Эти два знака могут иметь различные потребности в отношениях, но если оба готовы к компромиссам, отношения могут успешно развиваться.. Совместимость: 55%");
+        multiKeyMap.put(ARIES.getNameZodiac(), LEO.getNameZodiac(), "Это сильная пара, которая может создать страстные и динамичные отношения, полные приключений. Совместимость: 90%");
+        multiKeyMap.put(ARIES.getNameZodiac(), VIRGO.getNameZodiac(), "Дева может придать структуру и порядок в жизни Овна, что может быть полезным для обоих. Совместимость: 70%");
+        multiKeyMap.put(ARIES.getNameZodiac(), LIBRA.getNameZodiac(), "Весы могут приносить баланс и гармонию в отношения с Овном. Совместимость: 80%");
+        multiKeyMap.put(ARIES.getNameZodiac(), SCORPIO.getNameZodiac(), "Эта пара может создать интенсивные и страстные отношения, но иногда могут возникать конфликты из-за сильных характеров. Совместимость: 85%");
+        multiKeyMap.put(ARIES.getNameZodiac(), SAGITTARIUS.getNameZodiac(), "Оба знака ценят независимость и приключения, их отношения могут быть веселыми и захватывающими. Совместимость: 90%");
+        multiKeyMap.put(ARIES.getNameZodiac(), CAPRICORN.getNameZodiac(), "Козерог может придать стабильность и реализм в жизнь Овна. Совместимость: 75%");
+        multiKeyMap.put(ARIES.getNameZodiac(), AQUARIUS.getNameZodiac(), "Эта пара может разделять интересы в области инноваций и общественных вопросов. Совместимость: 70%");
+        multiKeyMap.put(ARIES.getNameZodiac(), PISCES.getNameZodiac(), "Рыбы могут добавить эмоциональность и интуицию в жизнь Овна, но иногда могут возникать разногласия. Совместимость: 65%");
+
+        if (multiKeyMap.get(zodiacMan, zodiacWomen) != null) {
+            return multiKeyMap.get(zodiacMan, zodiacWomen);
+        } else {
+            return "Я пока не знаю такого сочетания, Вы точно люди? Совместимость: 0%";
+        }
     }
 }

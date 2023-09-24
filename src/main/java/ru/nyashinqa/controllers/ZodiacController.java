@@ -7,6 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.nyashinqa.api.ZodiacSign;
 import ru.nyashinqa.enums.Month;
+import ru.nyashinqa.enums.ZodiacSing;
 
 import javax.validation.constraints.Max;
 
@@ -35,5 +36,14 @@ public class ZodiacController {
     ) {
         String zodiacName = zodiacSign.zodiacSignByMonth(month, day);
         return "Камень бедолаги - " + zodiacSign.stoneByZodiac(zodiacName) + ". Знак зодиака бедолаги - " + zodiacName;
+    }
+
+    @Operation(summary = "Совместимость по знакам зодиака")
+    @PostMapping("/zodiacsigncompatibility")
+    public String compatibilityZodiacPost(
+        @RequestParam("zodiacMen") @Parameter(description = "Зодиак Мужщина") ZodiacSing zodiacMen,
+        @RequestParam("zodiacWomen") @Parameter(description = "Зодиак Женщины") ZodiacSing zodiacWomen
+    ) {
+        return zodiacSign.compatibilityManZodiacAndWomenZodiac(zodiacMen.getNameZodiac(), zodiacWomen.getNameZodiac());
     }
 }
