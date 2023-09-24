@@ -5,6 +5,7 @@ import org.apache.commons.collections4.map.MultiKeyMap;
 import ru.nyashinqa.enums.Month;
 import ru.nyashinqa.models.CompatibilityZodiacResponse;
 
+import java.util.Calendar;
 import java.util.HashMap;
 
 import static ru.nyashinqa.enums.Month.*;
@@ -135,5 +136,9 @@ public class ZodiacSign {
         } else {
             return compatibilityZodiacErrorResponse;
         }
+    }
+
+    public String todayZodiac() {
+        return zodiacSignByMonth(Month.getInstance(Calendar.MONTH), Calendar.DAY_OF_MONTH);
     }
 }

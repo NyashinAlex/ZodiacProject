@@ -11,6 +11,9 @@ import ru.nyashinqa.enums.ZodiacSing;
 import ru.nyashinqa.models.CompatibilityZodiacResponse;
 
 import javax.validation.constraints.Max;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 @Validated
 @RestController
@@ -23,7 +26,7 @@ public class ZodiacController {
     @Operation(summary = "Получение знака зодиака по дате рождения")
     @PostMapping("/zodiacsign")
     public String zodiacPost(
-        @RequestParam("dayOfBirth") @Max(31) @Parameter(description = "День рождения") int day,
+        @RequestParam("dayOfBirth") @Max(31) @Parameter(description = "День рождения (числом 1-30)") int day,
         @RequestParam("monthOfBirth") @Parameter(description = "Месяц рождения") Month month
     ) {
         return "Бедолага по знаку зодиака - " + zodiacSign.zodiacSignByMonth(month, day);
@@ -32,7 +35,7 @@ public class ZodiacController {
     @Operation(summary = "Получение камня по дате рождения")
     @PostMapping("/zodiacsignstone")
     public String stonePost(
-        @RequestParam("dayOfBirth") @Max(31) @Parameter(description = "День рождения") int day,
+        @RequestParam("dayOfBirth") @Max(31) @Parameter(description = "День рождения (числом 1-30)") int day,
         @RequestParam("monthOfBirth") @Parameter(description = "Месяц рождения") Month month
     ) {
         String zodiacName = zodiacSign.zodiacSignByMonth(month, day);
@@ -46,5 +49,11 @@ public class ZodiacController {
         @RequestParam("zodiacWomen") @Parameter(description = "Зодиак Женщины") ZodiacSing zodiacWomen
     ) {
         return zodiacSign.compatibilityManZodiacAndWomenZodiac(zodiacMen.getNameZodiac(), zodiacWomen.getNameZodiac());
+    }
+
+    @Operation(summary = "Зодиак по сегодняшнему дню")
+    @GetMapping("/zodiactoday")
+    public String zodiacTodayGet() {
+        return zodiacSign.todayZodiac();
     }
 }
