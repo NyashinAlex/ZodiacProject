@@ -83,8 +83,8 @@ public class ZodiacSign {
         MultiKeyMap<String, String> multiKeyMap = MultiKeyMap.multiKeyMap(new LinkedMap<>());
         multiKeyMap.put(ARIES.getNameZodiac(), ARIES.getNameZodiac(), "Оба Овна могут находить общий язык благодаря их энергичности и страсти. Совместимость: 80%");
         multiKeyMap.put(ARIES.getNameZodiac(), TAURUS.getNameZodiac(), "Эти два знака могут привносить в отношения страсть и уверенность, но иногда могут возникать конфликты из-за упрямства Тельца. Совместимость: 60%");
-        multiKeyMap.put(ARIES.getNameZodiac(), GEMINI.getNameZodiac(), "Овен и Близнецы оба ценят разнообразие и разговоры, их отношения могут быть интересными и динамичными.. Совместимость: 75%");
-        multiKeyMap.put(ARIES.getNameZodiac(), CANCER.getNameZodiac(), "Эти два знака могут иметь различные потребности в отношениях, но если оба готовы к компромиссам, отношения могут успешно развиваться.. Совместимость: 55%");
+        multiKeyMap.put(ARIES.getNameZodiac(), GEMINI.getNameZodiac(), "Овен и Близнецы оба ценят разнообразие и разговоры, их отношения могут быть интересными и динамичными. Совместимость: 75%");
+        multiKeyMap.put(ARIES.getNameZodiac(), CANCER.getNameZodiac(), "Эти два знака могут иметь различные потребности в отношениях, но если оба готовы к компромиссам, отношения могут успешно развиваться. Совместимость: 55%");
         multiKeyMap.put(ARIES.getNameZodiac(), LEO.getNameZodiac(), "Это сильная пара, которая может создать страстные и динамичные отношения, полные приключений. Совместимость: 90%");
         multiKeyMap.put(ARIES.getNameZodiac(), VIRGO.getNameZodiac(), "Дева может придать структуру и порядок в жизни Овна, что может быть полезным для обоих. Совместимость: 70%");
         multiKeyMap.put(ARIES.getNameZodiac(), LIBRA.getNameZodiac(), "Весы могут приносить баланс и гармонию в отношения с Овном. Совместимость: 80%");
@@ -93,6 +93,19 @@ public class ZodiacSign {
         multiKeyMap.put(ARIES.getNameZodiac(), CAPRICORN.getNameZodiac(), "Козерог может придать стабильность и реализм в жизнь Овна. Совместимость: 75%");
         multiKeyMap.put(ARIES.getNameZodiac(), AQUARIUS.getNameZodiac(), "Эта пара может разделять интересы в области инноваций и общественных вопросов. Совместимость: 70%");
         multiKeyMap.put(ARIES.getNameZodiac(), PISCES.getNameZodiac(), "Рыбы могут добавить эмоциональность и интуицию в жизнь Овна, но иногда могут возникать разногласия. Совместимость: 65%");
+
+        multiKeyMap.put(TAURUS.getNameZodiac(), ARIES.getNameZodiac(), "Оба знака обладают стойкостью и стабильностью, но могут возникнуть конфликты из-за упрямства. Совместимость: 75%");
+        multiKeyMap.put(TAURUS.getNameZodiac(), TAURUS.getNameZodiac(), "Оба знака Тельца обладают практичностью и чувственностью, что создает прочную связь. Совместимость: 90%");
+        multiKeyMap.put(TAURUS.getNameZodiac(), GEMINI.getNameZodiac(), "Мужчина Телец и женщина Близнецы могут привнести разнообразие в отношения, но могут возникнуть разногласия из-за различий в характерах. Совместимость: 60%");
+        multiKeyMap.put(TAURUS.getNameZodiac(), CANCER.getNameZodiac(), "Тельцы и Раки создают теплые и заботливые отношения, но иногда Тельцы могут казаться слишком упрямыми. Совместимость: 80%");
+        multiKeyMap.put(TAURUS.getNameZodiac(), LEO.getNameZodiac(), "Оба знака имеют сильный характер, что может привести к конфликтам, но также создать страстные отношения. Совместимость: 70%");
+        multiKeyMap.put(TAURUS.getNameZodiac(), VIRGO.getNameZodiac(), "Тельцы и Девы оба практичны и заботливы, что делает их отношения гармоничными. Совместимость: 90%");
+        multiKeyMap.put(TAURUS.getNameZodiac(), LIBRA.getNameZodiac(), " Оба знака обладают чувственностью и эстетическим вкусом, но могут иногда теряться в размышлениях. Совместимость: 75%");
+        multiKeyMap.put(TAURUS.getNameZodiac(), SCORPIO.getNameZodiac(), "Мужчина Телец и женщина Скорпион создают страстные и интенсивные отношения, но иногда могут возникать ревности. Совместимость: 80%");
+        multiKeyMap.put(TAURUS.getNameZodiac(), SAGITTARIUS.getNameZodiac(), "Тельцы и Стрельцы могут создать интересные отношения, но различия во взглядах на жизнь могут вызвать конфликты. Совместимость: 65%");
+        multiKeyMap.put(TAURUS.getNameZodiac(), CAPRICORN.getNameZodiac(), "Оба знака Тельца и Козерога ориентированы на цели и создают стабильные отношения. Совместимость: 85%");
+        multiKeyMap.put(TAURUS.getNameZodiac(), AQUARIUS.getNameZodiac(), "Тельцы и Водолеи могут вдохновлять друг друга, но иногда могут возникнуть разногласия из-за независимости Водолеев. Совместимость: 70%");
+        multiKeyMap.put(TAURUS.getNameZodiac(), PISCES.getNameZodiac(), "Оба знака обладают чувствительностью, но иногда могут возникать недопонимания из-за разных способов выражения чувств. Совместимость: 75%");
 
         CompatibilityZodiacResponse compatibilityZodiacResponse = new CompatibilityZodiacResponse();
         compatibilityZodiacResponse.setZodiacMan(zodiacMan);
