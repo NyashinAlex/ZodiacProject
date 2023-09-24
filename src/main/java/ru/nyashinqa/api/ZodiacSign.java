@@ -107,6 +107,19 @@ public class ZodiacSign {
         multiKeyMap.put(TAURUS.getNameZodiac(), AQUARIUS.getNameZodiac(), "Тельцы и Водолеи могут вдохновлять друг друга, но иногда могут возникнуть разногласия из-за независимости Водолеев. Совместимость: 70%");
         multiKeyMap.put(TAURUS.getNameZodiac(), PISCES.getNameZodiac(), "Оба знака обладают чувствительностью, но иногда могут возникать недопонимания из-за разных способов выражения чувств. Совместимость: 75%");
 
+        multiKeyMap.put(GEMINI.getNameZodiac(), ARIES.getNameZodiac(), "Оба знака обладают энергией, но могут возникнуть разногласия из-за желания быть лидером. Совместимость: 70%");
+        multiKeyMap.put(GEMINI.getNameZodiac(), TAURUS.getNameZodiac(), "Мужчина Близнец и женщина Телец создают интересное сочетание интеллекта и стабильности. Совместимость: 85%");
+        multiKeyMap.put(GEMINI.getNameZodiac(), GEMINI.getNameZodiac(), "Оба знака Близнецы могут легко понимать друг друга и создавать разнообразие в отношениях. Совместимость: 90%");
+        multiKeyMap.put(GEMINI.getNameZodiac(), CANCER.getNameZodiac(), "Мужчина Близнец и женщина Рак могут иметь разные потребности в отношениях, что может вызвать конфликты. Совместимость: 65%");
+        multiKeyMap.put(GEMINI.getNameZodiac(), LEO.getNameZodiac(), "Оба знака обладают уверенностью, но могут конкурировать за внимание. Совместимость: 75%");
+        multiKeyMap.put(GEMINI.getNameZodiac(), VIRGO.getNameZodiac(), "Мужчина Близнец и женщина Дева могут создать гармоничные отношения, учитывая детали. Совместимость: 80%");
+        multiKeyMap.put(GEMINI.getNameZodiac(), LIBRA.getNameZodiac(), "Мужчина Близнец и женщина Весы оба ценят гармонию и красоту, что делает их отношения уравновешенными. Совместимость: 95%");
+        multiKeyMap.put(GEMINI.getNameZodiac(), SCORPIO.getNameZodiac(), "Мужчина Близнец и женщина Скорпион могут создать страстные отношения, но иногда могут возникнуть ревности. Совместимость: 70%");
+        multiKeyMap.put(GEMINI.getNameZodiac(), SAGITTARIUS.getNameZodiac(), "Оба знака могут разделять интерес к приключениям и новым опытам. Совместимость: 80%");
+        multiKeyMap.put(GEMINI.getNameZodiac(), CAPRICORN.getNameZodiac(), "Мужчина Близнец и женщина Козерог могут поддерживать друг друга в достижении целей. Совместимость: 75%");
+        multiKeyMap.put(GEMINI.getNameZodiac(), AQUARIUS.getNameZodiac(), "Оба знака могут разделять интерес к необычным идеям и инновациям. Совместимость: 85%");
+        multiKeyMap.put(GEMINI.getNameZodiac(), PISCES.getNameZodiac(), "Мужчина Близнец и женщина Рыбы могут иметь разные способы общения и могут возникнуть недопонимания. Совместимость: 60%");
+
         CompatibilityZodiacResponse compatibilityZodiacResponse = new CompatibilityZodiacResponse();
         compatibilityZodiacResponse.setZodiacMan(zodiacMan);
         compatibilityZodiacResponse.setZodiacWomen(zodiacWomen);
