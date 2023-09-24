@@ -3,6 +3,7 @@ package ru.nyashinqa.api;
 import org.apache.commons.collections4.map.LinkedMap;
 import org.apache.commons.collections4.map.MultiKeyMap;
 import ru.nyashinqa.enums.Month;
+import ru.nyashinqa.models.CompatibilityZodiacResponse;
 
 import java.util.HashMap;
 
@@ -77,7 +78,7 @@ public class ZodiacSign {
         return zodiacAndStone.get(zodiac);
     }
 
-    public String compatibilityManZodiacAndWomenZodiac(String zodiacMan, String zodiacWomen) {
+    public CompatibilityZodiacResponse compatibilityManZodiacAndWomenZodiac(String zodiacMan, String zodiacWomen) {
 
         MultiKeyMap<String, String> multiKeyMap = MultiKeyMap.multiKeyMap(new LinkedMap<>());
         multiKeyMap.put(ARIES.getNameZodiac(), ARIES.getNameZodiac(), "Оба Овна могут находить общий язык благодаря их энергичности и страсти. Совместимость: 80%");
@@ -93,10 +94,20 @@ public class ZodiacSign {
         multiKeyMap.put(ARIES.getNameZodiac(), AQUARIUS.getNameZodiac(), "Эта пара может разделять интересы в области инноваций и общественных вопросов. Совместимость: 70%");
         multiKeyMap.put(ARIES.getNameZodiac(), PISCES.getNameZodiac(), "Рыбы могут добавить эмоциональность и интуицию в жизнь Овна, но иногда могут возникать разногласия. Совместимость: 65%");
 
+        CompatibilityZodiacResponse compatibilityZodiacResponse = new CompatibilityZodiacResponse();
+        compatibilityZodiacResponse.setZodiacMan(zodiacMan);
+        compatibilityZodiacResponse.setZodiacWomen(zodiacWomen);
+        compatibilityZodiacResponse.setCompatibility(multiKeyMap.get(zodiacMan, zodiacWomen));
+
+        CompatibilityZodiacResponse compatibilityZodiacErrorResponse = new CompatibilityZodiacResponse();
+        compatibilityZodiacErrorResponse.setZodiacMan(zodiacMan);
+        compatibilityZodiacErrorResponse.setZodiacWomen(zodiacWomen);
+        compatibilityZodiacErrorResponse.setCompatibility("Я пока не знаю такого сочетания, Вы точно люди? Совместимость: 0%");
+
         if (multiKeyMap.get(zodiacMan, zodiacWomen) != null) {
-            return multiKeyMap.get(zodiacMan, zodiacWomen);
+            return compatibilityZodiacResponse;
         } else {
-            return "Я пока не знаю такого сочетания, Вы точно люди? Совместимость: 0%";
+            return compatibilityZodiacErrorResponse;
         }
     }
 }

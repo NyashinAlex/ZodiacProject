@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.nyashinqa.api.ZodiacSign;
 import ru.nyashinqa.enums.Month;
 import ru.nyashinqa.enums.ZodiacSing;
+import ru.nyashinqa.models.CompatibilityZodiacResponse;
 
 import javax.validation.constraints.Max;
 
@@ -40,7 +41,7 @@ public class ZodiacController {
 
     @Operation(summary = "Совместимость по знакам зодиака")
     @PostMapping("/zodiacsigncompatibility")
-    public String compatibilityZodiacPost(
+    public CompatibilityZodiacResponse compatibilityZodiacPost(
         @RequestParam("zodiacMen") @Parameter(description = "Зодиак Мужщина") ZodiacSing zodiacMen,
         @RequestParam("zodiacWomen") @Parameter(description = "Зодиак Женщины") ZodiacSing zodiacWomen
     ) {
