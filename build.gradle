@@ -1,0 +1,32 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.1'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'io.freefair.lombok' version '8.3'
+	id 'java'
+}
+
+group = 'ru.nyashinqa'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation(
+			'org.springframework.boot:spring-boot-starter-web',
+			'io.swagger.core.v3:swagger-annotations:2.2.15',
+			'org.springdoc:springdoc-openapi-ui:1.7.0',
+			'org.springframework.boot:spring-boot-starter-validation',
+			'org.projectlombok:lombok:1.18.30'
+	)
+}
+
+test {
+	useJUnitPlatform()
+}
