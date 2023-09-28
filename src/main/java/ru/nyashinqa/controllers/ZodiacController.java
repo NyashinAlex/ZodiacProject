@@ -11,9 +11,6 @@ import ru.nyashinqa.enums.ZodiacSing;
 import ru.nyashinqa.models.CompatibilityZodiacResponse;
 
 import javax.validation.constraints.Max;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 @Validated
 @RestController

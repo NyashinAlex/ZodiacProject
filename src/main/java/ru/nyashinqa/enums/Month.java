@@ -25,7 +25,7 @@ public enum Month {
 
     public static Month getInstance(int numberMonth) {
         for (Month month : values()) {
-            if(month.getNumberMonth() ==  numberMonth) {
+            if(month.getNumberMonth() == numberMonth) {
                 return month;
             }
         }
