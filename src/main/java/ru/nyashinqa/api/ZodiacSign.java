@@ -124,6 +124,19 @@ public class ZodiacSign {
         multiKeyMap.put(GEMINI.getNameZodiac(), AQUARIUS.getNameZodiac(), "Оба знака могут разделять интерес к необычным идеям и инновациям. Совместимость: 85%");
         multiKeyMap.put(GEMINI.getNameZodiac(), PISCES.getNameZodiac(), "Мужчина Близнец и женщина Рыбы могут иметь разные способы общения и могут возникнуть недопонимания. Совместимость: 60%");
 
+        multiKeyMap.put(CANCER.getNameZodiac(), ARIES.getNameZodiac(), "Овен могут иметь теплые моменты, но могут возникнуть конфликты из-за разных характеров. Совместимость: 60%");
+        multiKeyMap.put(CANCER.getNameZodiac(), TAURUS.getNameZodiac(), "Это хорошее сочетание. Оба знака стремятся к дому и семье. Совместимость: 85%");
+        multiKeyMap.put(CANCER.getNameZodiac(), GEMINI.getNameZodiac(), "Могут иметь трудности из-за разницы в характерах. Совместимость: 50%");
+        multiKeyMap.put(CANCER.getNameZodiac(), CANCER.getNameZodiac(), "Совместимость между мужчиной-Раком и женщиной-Раком обычно высока. Они оба искренни и заботливы. Совместимость: 90%");
+        multiKeyMap.put(CANCER.getNameZodiac(), LEO.getNameZodiac(), "Мужчина-Рак и женщина-Лев могут иметь различия в потребностях внимания. Совместимость: 70%");
+        multiKeyMap.put(CANCER.getNameZodiac(), VIRGO.getNameZodiac(), "Мужчина-Рак и женщина-Дева могут создать уютный и заботливый дом. Совместимость: 80%");
+        multiKeyMap.put(CANCER.getNameZodiac(), LIBRA.getNameZodiac(), "Мужчина-Рак и женщина-Весы могут находить общий язык, но им может потребоваться работать над согласованием. Совместимость: 70%");
+        multiKeyMap.put(CANCER.getNameZodiac(), SCORPIO.getNameZodiac(), "Мужчина-Рак и женщина-Скорпион могут иметь страстные и интенсивные отношения. Совместимость: 75%");
+        multiKeyMap.put(CANCER.getNameZodiac(), SAGITTARIUS.getNameZodiac(), "Мужчина-Рак и женщина-Стрелец могут иметь разные взгляды на жизнь, но с уважением друг к другу, отношения могут быть успешными. Совместимость: 65%");
+        multiKeyMap.put(CANCER.getNameZodiac(), CAPRICORN.getNameZodiac(), "Мужчина-Рак и женщина-Козерог могут иметь разные приоритеты, но с усилиями оба могут найти компромисс. Совместимость: 70%");
+        multiKeyMap.put(CANCER.getNameZodiac(), AQUARIUS.getNameZodiac(), "Мужчина-Рак и женщина-Водолей могут быть друзьями, но отношения могут быть менее эмоциональными. Совместимость: 60%");
+        multiKeyMap.put(CANCER.getNameZodiac(), PISCES.getNameZodiac(), "Мужчина-Рак и женщина-Рыбы могут иметь глубокую связь и понимание друг друга. Совместимость: 90%");
+
         CompatibilityZodiacResponse compatibilityZodiacResponse = new CompatibilityZodiacResponse();
         compatibilityZodiacResponse.setZodiacMan(zodiacMan);
         compatibilityZodiacResponse.setZodiacWomen(zodiacWomen);
