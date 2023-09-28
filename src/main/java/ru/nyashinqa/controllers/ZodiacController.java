@@ -9,6 +9,8 @@ import ru.nyashinqa.api.ZodiacSign;
 import ru.nyashinqa.enums.Month;
 import ru.nyashinqa.enums.ZodiacSing;
 import ru.nyashinqa.models.CompatibilityZodiacResponse;
+import ru.nyashinqa.models.HoroscopeRequest;
+import ru.nyashinqa.models.HoroscopeResponse;
 
 import javax.validation.constraints.Max;
 
@@ -21,7 +23,7 @@ public class ZodiacController {
     ZodiacSign zodiacSign = new ZodiacSign();
 
     @Operation(summary = "Получение знака зодиака по дате рождения")
-    @PostMapping("/zodiacsign")
+    @GetMapping("/zodiacsign")
     public String zodiacPost(
         @RequestParam("dayOfBirth") @Max(31) @Parameter(description = "День рождения (числом 1-30)") int day,
         @RequestParam("monthOfBirth") @Parameter(description = "Месяц рождения") Month month
@@ -30,7 +32,7 @@ public class ZodiacController {
     }
 
     @Operation(summary = "Получение камня по дате рождения")
-    @PostMapping("/zodiacsignstone")
+    @GetMapping("/zodiacsignstone")
     public String stonePost(
         @RequestParam("dayOfBirth") @Max(31) @Parameter(description = "День рождения (числом 1-30)") int day,
         @RequestParam("monthOfBirth") @Parameter(description = "Месяц рождения") Month month
@@ -40,7 +42,7 @@ public class ZodiacController {
     }
 
     @Operation(summary = "Совместимость по знакам зодиака")
-    @PostMapping("/zodiacsigncompatibility")
+    @GetMapping("/zodiacsigncompatibility")
     public CompatibilityZodiacResponse compatibilityZodiacPost(
         @RequestParam("zodiacMen") @Parameter(description = "Зодиак Мужщина") ZodiacSing zodiacMen,
         @RequestParam("zodiacWomen") @Parameter(description = "Зодиак Женщины") ZodiacSing zodiacWomen
@@ -52,5 +54,11 @@ public class ZodiacController {
     @GetMapping("/zodiactoday")
     public String zodiacTodayGet() {
         return zodiacSign.todayZodiac();
+    }
+
+    @Operation(summary = "Получение гороскопа по знаку зодиака")
+    @PostMapping("/horoscope")
+    public HoroscopeResponse getHoroscope(@RequestBody HoroscopeRequest horoscopeRequest) {
+        return zodiacSign.getHoroscope(horoscopeRequest.getZodiac(), horoscopeRequest.getTypeHoroscope());
     }
 }

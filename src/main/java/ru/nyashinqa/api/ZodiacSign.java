@@ -2,8 +2,11 @@ package ru.nyashinqa.api;
 
 import org.apache.commons.collections4.map.LinkedMap;
 import org.apache.commons.collections4.map.MultiKeyMap;
+import ru.nyashinqa.enums.Horoscope;
 import ru.nyashinqa.enums.Month;
+import ru.nyashinqa.enums.ZodiacSing;
 import ru.nyashinqa.models.CompatibilityZodiacResponse;
+import ru.nyashinqa.models.HoroscopeResponse;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -140,5 +143,16 @@ public class ZodiacSign {
 
     public String todayZodiac() {
         return zodiacSignByMonth(Month.getInstance(Calendar.MONTH), Calendar.DAY_OF_MONTH);
+    }
+
+    public HoroscopeResponse getHoroscope(ZodiacSing zodiac, String typeHoroscope) {
+
+        String nameZodiac = zodiac.getNameZodiac();
+        String msgHoroscope = switch (typeHoroscope) {
+            case ("GeneralDescription") -> Horoscope.getInstance(zodiac).getGeneralDescription();
+            case ("ElementSign") -> Horoscope.getInstance(zodiac).getElementSign();
+            default -> "Неизвестный тип гороскопа";
+        };
+        return new HoroscopeResponse(nameZodiac, typeHoroscope, msgHoroscope);
     }
 }
