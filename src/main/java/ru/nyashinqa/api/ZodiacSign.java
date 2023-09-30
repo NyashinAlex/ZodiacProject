@@ -104,7 +104,7 @@ public class ZodiacSign {
         multiKeyMap.put(TAURUS.getNameZodiac(), CANCER.getNameZodiac(), "Тельцы и Раки создают теплые и заботливые отношения, но иногда Тельцы могут казаться слишком упрямыми. Совместимость: 80%");
         multiKeyMap.put(TAURUS.getNameZodiac(), LEO.getNameZodiac(), "Оба знака имеют сильный характер, что может привести к конфликтам, но также создать страстные отношения. Совместимость: 70%");
         multiKeyMap.put(TAURUS.getNameZodiac(), VIRGO.getNameZodiac(), "Тельцы и Девы оба практичны и заботливы, что делает их отношения гармоничными. Совместимость: 90%");
-        multiKeyMap.put(TAURUS.getNameZodiac(), LIBRA.getNameZodiac(), " Оба знака обладают чувственностью и эстетическим вкусом, но могут иногда теряться в размышлениях. Совместимость: 75%");
+        multiKeyMap.put(TAURUS.getNameZodiac(), LIBRA.getNameZodiac(), "Оба знака обладают чувственностью и эстетическим вкусом, но могут иногда теряться в размышлениях. Совместимость: 75%");
         multiKeyMap.put(TAURUS.getNameZodiac(), SCORPIO.getNameZodiac(), "Мужчина Телец и женщина Скорпион создают страстные и интенсивные отношения, но иногда могут возникать ревности. Совместимость: 80%");
         multiKeyMap.put(TAURUS.getNameZodiac(), SAGITTARIUS.getNameZodiac(), "Тельцы и Стрельцы могут создать интересные отношения, но различия во взглядах на жизнь могут вызвать конфликты. Совместимость: 65%");
         multiKeyMap.put(TAURUS.getNameZodiac(), CAPRICORN.getNameZodiac(), "Оба знака Тельца и Козерога ориентированы на цели и создают стабильные отношения. Совместимость: 85%");
