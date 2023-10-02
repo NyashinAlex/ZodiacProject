@@ -1,10 +1,11 @@
 package ru.nyashinqa.support;
 
-import lombok.SneakyThrows;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
+import ru.nyashinqa.db.Compatibility;
+import ru.nyashinqa.db.ZodiacSing;
 
 import java.util.Properties;
 
@@ -20,8 +21,7 @@ public class JDBCDriver {
 
         }
 
-        @SneakyThrows
-        public static SessionFactory getSessionFactory() {
+        public static SessionFactory getSessionFactory()  {
             if (sessionFactory == null) {
                 try {
                     Configuration configuration = new Configuration();
@@ -38,7 +38,8 @@ public class JDBCDriver {
         }
 
         private static void configurationAnnotatedAdd(Configuration configuration) {
-//            configuration.addAnnotatedClass(BasicServiceSetDetails.class);
+            configuration.addAnnotatedClass(Compatibility.class);
+            configuration.addAnnotatedClass(ZodiacSing.class);
         }
 
         private static void propertiesPut(Properties properties) {
