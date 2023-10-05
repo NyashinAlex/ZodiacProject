@@ -1,8 +1,5 @@
 package ru.nyashinqa.api;
 
-import org.apache.commons.collections4.map.LinkedMap;
-import org.apache.commons.collections4.map.MultiKeyMap;
-import ru.nyashinqa.db.Compatibility;
 import ru.nyashinqa.enums.Horoscope;
 import ru.nyashinqa.enums.Month;
 import ru.nyashinqa.enums.ZodiacSing;
@@ -12,7 +9,6 @@ import ru.nyashinqa.support.ConnectionDB;
 
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 
 import static ru.nyashinqa.enums.Month.*;
 import static ru.nyashinqa.enums.Stones.*;
