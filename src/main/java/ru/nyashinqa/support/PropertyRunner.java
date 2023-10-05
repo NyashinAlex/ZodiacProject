@@ -17,7 +17,7 @@ public class PropertyRunner {
             if (env == null) {
                 env = "st";
             }
-            fileInputStream = getClass().getClassLoader().getResourceAsStream("properties/" + env + "_config.properties");
+            fileInputStream = getClass().getClassLoader().getResourceAsStream("properties/env_config.properties");
             properties.load(fileInputStream);
             if (fileInputStream != null) {
                 fileInputStream.close();

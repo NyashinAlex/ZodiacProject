@@ -47,7 +47,7 @@ public class JDBCDriver {
             properties.put(Environment.URL, "jdbc:postgresql://" + (url.endsWith("/") ? url + database : url + "/" + database));
             properties.put(Environment.USER, username);
             properties.put(Environment.PASS, password);
-            properties.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQL10Dialect");
+//            properties.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQL10Dialect");
             properties.put(Environment.SHOW_SQL, "false");
         }
     }

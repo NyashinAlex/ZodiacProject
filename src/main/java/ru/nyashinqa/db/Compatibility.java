@@ -1,5 +1,6 @@
 package ru.nyashinqa.db;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 @Table(name = "compatibility", schema = "zodiac")
 public class Compatibility {
 

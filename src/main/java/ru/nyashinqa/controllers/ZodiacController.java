@@ -47,7 +47,7 @@ public class ZodiacController {
         @RequestParam("zodiacMen") @Parameter(description = "Зодиак Мужщина") ZodiacSing zodiacMen,
         @RequestParam("zodiacWomen") @Parameter(description = "Зодиак Женщины") ZodiacSing zodiacWomen
     ) {
-        return zodiacSign.compatibilityManZodiacAndWomenZodiac(zodiacMen.getNameZodiac(), zodiacWomen.getNameZodiac());
+        return zodiacSign.compatibilityManZodiacAndWomenZodiac(zodiacMen, zodiacWomen);
     }
 
     @Operation(summary = "Зодиак по сегодняшнему дню")
