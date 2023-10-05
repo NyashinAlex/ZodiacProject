@@ -5,7 +5,7 @@ import ru.nyashinqa.enums.Month;
 import ru.nyashinqa.enums.ZodiacSing;
 import ru.nyashinqa.models.CompatibilityZodiacResponse;
 import ru.nyashinqa.models.HoroscopeResponse;
-import ru.nyashinqa.support.ConnectionDB;
+import ru.nyashinqa.support.WriterByDB;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ import static ru.nyashinqa.enums.ZodiacSing.*;
 
 public class ZodiacSign {
 
-    ConnectionDB connectionDB = new ConnectionDB();
+    WriterByDB writerByDB = new WriterByDB();
 
     public String zodiacSignByMonth(Month month, int day) {
         String returnZodiac = null;
@@ -87,7 +87,7 @@ public class ZodiacSign {
         CompatibilityZodiacResponse compatibilityZodiacResponse = new CompatibilityZodiacResponse(
                 zodiacMan.getNameZodiac(),
                 zodiacWomen.getNameZodiac(),
-                connectionDB.getCompatibility(zodiacMan.getIdZodiac(), zodiacWomen.getIdZodiac()));
+                writerByDB.getCompatibility(zodiacMan.getIdZodiac(), zodiacWomen.getIdZodiac()));
 
         return compatibilityZodiacResponse;
     }
