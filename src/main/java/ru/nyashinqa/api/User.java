@@ -2,11 +2,13 @@ package ru.nyashinqa.api;
 
 import ru.nyashinqa.support.WriterByDB;
 
-public class User {
+public class User extends WriterByDB{
 
-    WriterByDB db = new WriterByDB();
+    public String[] registerNewUser(String userName, String password) {
+        return super.registerNewUser(userName, password);
+    }
 
-    public void registerNewUser(String userName, String password) {
-
+    public String[] deleteUser(String userName) {
+        return super.deleteUser(userName);
     }
 }

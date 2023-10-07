@@ -38,6 +38,12 @@ public class WriterByDB {
         }
     }
 
+    public int checkUserForRegister(String userName) {
+        String queryString = String.format("select * from zodiac.users where user_name = '%s';", userName);
+        List<Users> user = selectResult(queryString, Users.class);
+        return user.size();
+    }
+
     public String[] registerNewUser(String userName, String password) {
         int countUser = checkUserForRegister(userName);
         String msg;
@@ -70,11 +76,5 @@ public class WriterByDB {
             status = "ERROR";
         }
         return new String[]{status, msg};
-    }
-
-    public int checkUserForRegister(String userName) {
-        String queryString = String.format("select * from zodiac.users where user_name = '%s';", userName);
-        List<Users> user = selectResult(queryString, Users.class);
-        return user.size();
     }
 }
