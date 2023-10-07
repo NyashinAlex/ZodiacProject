@@ -38,24 +38,31 @@ public class WriterByDB {
         }
     }
 
-    public void registerNewUser(String userName, String password) {
-        String queryString = String.format("insert into zodiac.users (user_name, password) values ('%s', '%s');", userName, password);
-        updateQuery(queryString);
-    }
-
-    public String[] checkUserForRegister(String userName, String password) {
-        String queryString = String.format("select * from zodiac.users where user_name = '%s';", userName);
-        List<Users> user = selectResult(queryString, Users.class);
+    public String[] registerNewUser(String userName, String password) {
+        int countUser = checkUserForRegister(userName,password);
         String msg;
         String status;
-        if(user.size() == 0) {
+
+        if(countUser == 0) {
+            String queryString = String.format("insert into zodiac.users (user_name, password) values ('%s', '%s');", userName, password);
+            updateQuery(queryString);
             msg = "Пользователь успешно зарегистрирован";
             status = "OK";
-            registerNewUser(userName, password);
         } else {
             msg = "Пользователь есть в системе, регистрация невозможна";
             status = "ERROR";
         }
-        return new String[] {msg, status};
+        return new String[]{status, msg};
+    }
+
+    public void deleteUser(String userName) {
+        String queryString = String.format("insert into zodiac.users (user_name, password) values ('%s', '%s');", userName);
+        updateQuery(queryString);
+    }
+
+    public int checkUserForRegister(String userName, String password) {
+        String queryString = String.format("select * from zodiac.users where user_name = '%s';", userName);
+        List<Users> user = selectResult(queryString, Users.class);
+        return user.size();
     }
 }
