@@ -39,7 +39,7 @@ public class WriterByDB {
     }
 
     public String[] registerNewUser(String userName, String password) {
-        int countUser = checkUserForRegister(userName,password);
+        int countUser = checkUserForRegister(userName);
         String msg;
         String status;
 
@@ -55,12 +55,24 @@ public class WriterByDB {
         return new String[]{status, msg};
     }
 
-    public void deleteUser(String userName) {
-        String queryString = String.format("insert into zodiac.users (user_name, password) values ('%s', '%s');", userName);
-        updateQuery(queryString);
+    public String[] deleteUser(String userName) {
+        int countUser = checkUserForRegister(userName);
+        String msg;
+        String status;
+
+        if(countUser == 1) {
+            String queryString = String.format("delete from zodiac.users where user_name = '%s';", userName);
+            updateQuery(queryString);
+            msg = "Пользователь успешно удален";
+            status = "OK";
+        } else {
+            msg = "Пользователь не найден";
+            status = "ERROR";
+        }
+        return new String[]{status, msg};
     }
 
-    public int checkUserForRegister(String userName, String password) {
+    public int checkUserForRegister(String userName) {
         String queryString = String.format("select * from zodiac.users where user_name = '%s';", userName);
         List<Users> user = selectResult(queryString, Users.class);
         return user.size();
