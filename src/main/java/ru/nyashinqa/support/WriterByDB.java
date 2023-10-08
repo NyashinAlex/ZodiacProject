@@ -44,37 +44,13 @@ public class WriterByDB {
         return user.size();
     }
 
-    public String[] registerNewUser(String userName, String password) {
-        int countUser = checkUserForRegister(userName);
-        String msg;
-        String status;
-
-        if(countUser == 0) {
-            String queryString = String.format("insert into zodiac.users (user_name, password) values ('%s', '%s');", userName, password);
-            updateQuery(queryString);
-            msg = "Пользователь успешно зарегистрирован";
-            status = "OK";
-        } else {
-            msg = "Пользователь есть в системе, регистрация невозможна";
-            status = "ERROR";
-        }
-        return new String[]{status, msg};
+    public void registerNewUser(String userName, String password) {
+        String queryString = String.format("insert into zodiac.users (user_name, password) values ('%s', '%s');", userName, password);
+        updateQuery(queryString);
     }
 
-    public String[] deleteUser(String userName) {
-        int countUser = checkUserForRegister(userName);
-        String msg;
-        String status;
-
-        if(countUser == 1) {
-            String queryString = String.format("delete from zodiac.users where user_name = '%s';", userName);
-            updateQuery(queryString);
-            msg = "Пользователь успешно удален";
-            status = "OK";
-        } else {
-            msg = "Пользователь не найден";
-            status = "ERROR";
-        }
-        return new String[]{status, msg};
+    public void deleteUser(String userName) {
+        String queryString = String.format("delete from zodiac.users where user_name = '%s';", userName);
+        updateQuery(queryString);
     }
 }
