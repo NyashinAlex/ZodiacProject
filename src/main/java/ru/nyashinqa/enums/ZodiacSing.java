@@ -22,4 +22,13 @@ public enum ZodiacSing {
 
     private final int idZodiac;
     private final String nameZodiac;
+
+    public static String getInstance(String nameZodiac) {
+        for (ZodiacSing zodiacSing : values()) {
+            if(zodiacSing.getNameZodiac().equals(nameZodiac)) {
+                return nameZodiac;
+            }
+        }
+        return null;
+    }
 }

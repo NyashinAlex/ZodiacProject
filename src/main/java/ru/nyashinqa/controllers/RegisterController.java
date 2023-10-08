@@ -5,9 +5,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.nyashinqa.api.User;
-import ru.nyashinqa.models.UserDeleteRequest;
 import ru.nyashinqa.models.UserRequest;
+import ru.nyashinqa.models.UserRegisterRequest;
 import ru.nyashinqa.models.UserResponse;
+import ru.nyashinqa.models.UserUpdateRequest;
 
 @Validated
 @RestController
@@ -19,17 +20,25 @@ public class RegisterController {
 
     @Operation(summary = "Регистрация нового пользователя")
     @PostMapping("/registerUser")
-    public UserResponse registerUserPost(@RequestBody UserRequest userRequest) {
-        String[] msgAndStatus = user.registerNewUser(userRequest.getUserName(), userRequest.getPassword());
-        UserResponse userResponse = new UserResponse(userRequest.getUserName(), msgAndStatus[0], msgAndStatus[1]);
+    public UserResponse registerUserPost(@RequestBody UserRegisterRequest userRegisterRequest) {
+        String[] msgAndStatus = user.registerNewUser(userRegisterRequest.getUserName(), userRegisterRequest.getPassword());
+        UserResponse userResponse = new UserResponse(userRegisterRequest.getUserName(), msgAndStatus[0], msgAndStatus[1]);
         return userResponse;
     }
 
     @Operation(summary = "Удаление пользователя")
     @DeleteMapping("/deleteUser")
-    public UserResponse deleteUser(@RequestBody UserDeleteRequest userDeleteRequest) {
-        String[] msgAndStatus = user.deleteUser(userDeleteRequest.getUserName());
-        UserResponse userResponse = new UserResponse(userDeleteRequest.getUserName(), msgAndStatus[0], msgAndStatus[1]);
+    public UserResponse deleteUser(@RequestBody UserRequest userRequest) {
+        String[] msgAndStatus = user.deleteUser(userRequest.getUserName());
+        UserResponse userResponse = new UserResponse(userRequest.getUserName(), msgAndStatus[0], msgAndStatus[1]);
+        return userResponse;
+    }
+
+    @Operation(summary = "Обновление у пользователя знака зодиака")
+    @PutMapping("/updateZodiacByUser")
+    public UserResponse updateZodiacByUser(@RequestBody UserUpdateRequest userUpdateRequest) {
+        String[] msgAndStatus = user.updateZodiacByUser(userUpdateRequest.getUserName(), userUpdateRequest.getDayOfBirth(), userUpdateRequest.getMonthOfBirth());
+        UserResponse userResponse = new UserResponse(userUpdateRequest.getUserName(), msgAndStatus[0], msgAndStatus[1]);
         return userResponse;
     }
 }

@@ -53,4 +53,9 @@ public class WriterByDB {
         String queryString = String.format("delete from zodiac.users where user_name = '%s';", userName);
         updateQuery(queryString);
     }
+
+    public void updateZodiacByUser(String zodiac, String userName) {
+        String queryString = String.format("update zodiac.users set zodiac = '%s' where user_name = '%s';", zodiac, userName);
+        updateQuery(queryString);
+    }
 }
