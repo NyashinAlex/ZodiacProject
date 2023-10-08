@@ -26,9 +26,6 @@ public class Users {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "day_of_birth")
-    private String dayOfBirth;
-
     @Column(name = "zodiac")
     private String zodiac;
 
