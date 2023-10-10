@@ -4,6 +4,8 @@ import ru.nyashinqa.enums.Month;
 import ru.nyashinqa.enums.ZodiacSing;
 import ru.nyashinqa.support.WriterByDB;
 
+import java.util.HashMap;
+
 public class User {
 
     WriterByDB db = new WriterByDB();
@@ -41,21 +43,29 @@ public class User {
         return new String[]{status, msg};
     }
 
-    public String[] updateZodiacByUser(String userName, int dayOfBirth, Month monthOfBirth) {
+    public HashMap<String, String> updateInfoByUser(String userName, int dayOfBirth, Month monthOfBirth) {
         int countUser = db.checkUserForRegister(userName);
         String zodiacByUser = zodiacSign.zodiacSignByMonth(monthOfBirth, dayOfBirth);
+        String stoneByUser = zodiacSign.stoneByZodiac(zodiacByUser);
         String msg;
         String status;
 
         if(countUser == 1 && ZodiacSing.getInstance(zodiacByUser) != null) {
             db.updateZodiacByUser(zodiacByUser, userName);
-            msg = "Зодиак у пользователя успешно обновлен";
+            db.updateStoneByUser(stoneByUser, userName);
+            msg = "Данные пользователя успешно обновлены";
             status = "SUCCESS";
         } else {
             msg = "Пользователь не найден или неверная день рождения";
             status = "ERROR";
         }
 
-        return new String[]{status, msg};
+        HashMap<String, String> map = new HashMap<>();
+        map.put("msg", msg);
+        map.put("status", status);
+        map.put("zodiacByUser", zodiacByUser);
+        map.put("stoneByUser", stoneByUser);
+
+        return map;
     }
 }

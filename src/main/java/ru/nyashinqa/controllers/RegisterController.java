@@ -5,10 +5,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.nyashinqa.api.User;
-import ru.nyashinqa.models.UserRequest;
-import ru.nyashinqa.models.UserRegisterRequest;
-import ru.nyashinqa.models.UserResponse;
-import ru.nyashinqa.models.UserUpdateRequest;
+import ru.nyashinqa.models.*;
+
+import java.util.HashMap;
 
 @Validated
 @RestController
@@ -34,11 +33,16 @@ public class RegisterController {
         return userResponse;
     }
 
-    @Operation(summary = "Обновление у пользователя знака зодиака")
+    @Operation(summary = "Обновление у пользователя данных, связанные с знаком зодиака")
     @PutMapping("/updateZodiacByUser")
-    public UserResponse updateZodiacByUser(@RequestBody UserUpdateRequest userUpdateRequest) {
-        String[] msgAndStatus = user.updateZodiacByUser(userUpdateRequest.getUserName(), userUpdateRequest.getDayOfBirth(), userUpdateRequest.getMonthOfBirth());
-        UserResponse userResponse = new UserResponse(userUpdateRequest.getUserName(), msgAndStatus[0], msgAndStatus[1]);
-        return userResponse;
+    public UserFullResponse updateZodiacByUser(@RequestBody UserUpdateRequest userUpdateRequest) {
+        HashMap<String, String> msg = user.updateInfoByUser(userUpdateRequest.getUserName(), userUpdateRequest.getDayOfBirth(), userUpdateRequest.getMonthOfBirth());
+        UserFullResponse userFullResponse = new UserFullResponse(
+                userUpdateRequest.getUserName(),
+                msg.get("status"),
+                msg.get("msg"),
+                msg.get("zodiacByUser"),
+                msg.get("stoneByUser"));
+        return userFullResponse;
     }
 }

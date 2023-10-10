@@ -29,4 +29,7 @@ public class Users {
     @Column(name = "zodiac")
     private String zodiac;
 
+    @Column(name = "stone")
+    private String stone;
+
 }

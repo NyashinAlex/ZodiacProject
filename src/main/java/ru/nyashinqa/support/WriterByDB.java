@@ -58,4 +58,9 @@ public class WriterByDB {
         String queryString = String.format("update zodiac.users set zodiac = '%s' where user_name = '%s';", zodiac, userName);
         updateQuery(queryString);
     }
+
+    public void updateStoneByUser(String stone, String userName) {
+        String queryString = String.format("update zodiac.users set stone = '%s' where user_name = '%s';", stone, userName);
+        updateQuery(queryString);
+    }
 }
