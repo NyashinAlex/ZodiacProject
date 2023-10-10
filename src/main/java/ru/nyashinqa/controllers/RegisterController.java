@@ -41,8 +41,8 @@ public class RegisterController {
                 userUpdateRequest.getUserName(),
                 msg.get("status"),
                 msg.get("msg"),
-                msg.get("zodiacByUser"),
-                msg.get("stoneByUser"));
+                msg.get("stoneByUser"),
+                msg.get("zodiacByUser"));
         return userFullResponse;
     }
 }
