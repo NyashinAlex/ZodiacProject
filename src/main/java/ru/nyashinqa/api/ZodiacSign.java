@@ -104,6 +104,6 @@ public class ZodiacSign {
             case ("ElementSign") -> Horoscope.getInstance(zodiac).getElementSign();
             default -> "Неизвестный тип гороскопа";
         };
-        return new HoroscopeResponse(nameZodiac, typeHoroscope, msgHoroscope);
+        return new HoroscopeResponse(nameZodiac, "Когда рождается этот зодиак: " + zodiac.getPeriodDateOfBirth(), typeHoroscope, msgHoroscope);
     }
 }

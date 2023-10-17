@@ -10,6 +10,7 @@ import lombok.Setter;
 public class HoroscopeResponse {
 
     private String zodiac;
+    private String periodDateOfBirth;
     private String typeHoroscope;
     private String msgHoroscope;
 }
