@@ -11,13 +11,17 @@ public class User {
     WriterByDB db = new WriterByDB();
     ZodiacSign zodiacSign = new ZodiacSign();
 
-    public String[] registerNewUser(String userName, String password) {
+    public String[] registerNewUser(String userName, String password, String sex) {
         int countUser = db.checkUserForRegister(userName);
         String msg;
         String status;
 
+        if(!sex.equals("woman") && !sex.equals("man")) {
+            sex = "unknown";
+        }
+
         if(countUser == 0) {
-            db.registerNewUser(userName, password);
+            db.registerNewUser(userName, password, sex);
             msg = "Пользователь успешно зарегистрирован";
             status = "OK";
         } else {

@@ -20,7 +20,7 @@ public class RegisterController {
     @Operation(summary = "Регистрация нового пользователя")
     @PostMapping("/registerUser")
     public UserResponse registerUserPost(@RequestBody UserRegisterRequest userRegisterRequest) {
-        String[] msgAndStatus = user.registerNewUser(userRegisterRequest.getUserName(), userRegisterRequest.getPassword());
+        String[] msgAndStatus = user.registerNewUser(userRegisterRequest.getUserName(), userRegisterRequest.getPassword(), userRegisterRequest.getSex());
         UserResponse userResponse = new UserResponse(userRegisterRequest.getUserName(), msgAndStatus[0], msgAndStatus[1]);
         return userResponse;
     }

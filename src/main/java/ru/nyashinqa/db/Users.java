@@ -32,4 +32,7 @@ public class Users {
     @Column(name = "stone")
     private String stone;
 
+    @Column(name = "sex")
+    private String sex;
+
 }
