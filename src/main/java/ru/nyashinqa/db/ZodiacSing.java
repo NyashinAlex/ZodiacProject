@@ -21,4 +21,7 @@ public class ZodiacSing {
     @Column(name = "name_zodiac")
     private String nameZodiac;
 
+    @Column(name = "name_zodiac_ru")
+    private String nameZodiacRu;
+
 }

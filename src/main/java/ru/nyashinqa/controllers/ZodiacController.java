@@ -6,8 +6,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.nyashinqa.api.ZodiacSign;
+import ru.nyashinqa.db.Coffe;
 import ru.nyashinqa.enums.Month;
 import ru.nyashinqa.enums.ZodiacSing;
+import ru.nyashinqa.models.CoffeZodiacResponse;
 import ru.nyashinqa.models.CompatibilityZodiacResponse;
 import ru.nyashinqa.models.HoroscopeRequest;
 import ru.nyashinqa.models.HoroscopeResponse;
@@ -25,8 +27,8 @@ public class ZodiacController {
     @Operation(summary = "Получение знака зодиака по дате рождения")
     @GetMapping("/zodiacsign")
     public String zodiacPost(
-        @RequestParam("dayOfBirth") @Max(31) @Parameter(description = "День рождения (числом 1-30)") int day,
-        @RequestParam("monthOfBirth") @Parameter(description = "Месяц рождения") Month month
+            @RequestParam("dayOfBirth") @Max(31) @Parameter(description = "День рождения (числом 1-30)") int day,
+            @RequestParam("monthOfBirth") @Parameter(description = "Месяц рождения") Month month
     ) {
         return "Бедолага по знаку зодиака - " + zodiacSign.zodiacSignByMonth(month, day);
     }
@@ -34,18 +36,18 @@ public class ZodiacController {
     @Operation(summary = "Получение камня по дате рождения")
     @GetMapping("/zodiacsignstone")
     public String stonePost(
-        @RequestParam("dayOfBirth") @Max(31) @Parameter(description = "День рождения (числом 1-30)") int day,
-        @RequestParam("monthOfBirth") @Parameter(description = "Месяц рождения") Month month
+            @RequestParam("dayOfBirth") @Max(31) @Parameter(description = "День рождения (числом 1-30)") int day,
+            @RequestParam("monthOfBirth") @Parameter(description = "Месяц рождения") Month month
     ) {
-        String zodiacName = zodiacSign.zodiacSignByMonth(month, day);
+        String zodiacName = zodiacSign.zodiacSignByMonth(month, day).getNameZodiac();
         return "Камень бедолаги - " + zodiacSign.stoneByZodiac(zodiacName) + ". Знак зодиака бедолаги - " + zodiacName;
     }
 
     @Operation(summary = "Совместимость по знакам зодиака")
     @GetMapping("/zodiacsigncompatibility")
     public CompatibilityZodiacResponse compatibilityZodiacPost(
-        @RequestParam("zodiacMen") @Parameter(description = "Зодиак Мужщина") ZodiacSing zodiacMen,
-        @RequestParam("zodiacWomen") @Parameter(description = "Зодиак Женщины") ZodiacSing zodiacWomen
+            @RequestParam("zodiacMen") @Parameter(description = "Зодиак Мужщина") ZodiacSing zodiacMen,
+            @RequestParam("zodiacWomen") @Parameter(description = "Зодиак Женщины") ZodiacSing zodiacWomen
     ) {
         return zodiacSign.compatibilityManZodiacAndWomenZodiac(zodiacMen, zodiacWomen);
     }
@@ -54,6 +56,16 @@ public class ZodiacController {
     @GetMapping("/zodiactoday")
     public String zodiacTodayGet() {
         return zodiacSign.todayZodiac();
+    }
+
+    @Operation(summary = "Кофе по знаку зодиака")
+    @GetMapping("/coffe")
+    public CoffeZodiacResponse coffeByZodiacSingGet(
+            @RequestParam("zodiac") @Parameter(description = "Знак зодиака") ZodiacSing zodiacSing
+    ) {
+        Coffe coffe = zodiacSign.getCoffeByZodiacSing(zodiacSing);
+        CoffeZodiacResponse coffeZodiacResponse = new CoffeZodiacResponse(coffe.getCoffe(), coffe.getDesc());
+        return coffeZodiacResponse;
     }
 
     @Operation(summary = "Получение гороскопа по знаку зодиака")

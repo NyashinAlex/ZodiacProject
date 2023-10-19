@@ -14,4 +14,5 @@ public class UserFullResponse {
     private String msg;
     private String stone;
     private String zodiac;
+    private CoffeZodiacResponse coffeByZodiacSing;
 }

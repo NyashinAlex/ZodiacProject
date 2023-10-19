@@ -3,8 +3,10 @@ package ru.nyashinqa.support;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import ru.nyashinqa.db.Coffe;
 import ru.nyashinqa.db.Compatibility;
 import ru.nyashinqa.db.Users;
+import ru.nyashinqa.enums.ZodiacSing;
 
 import java.util.List;
 
@@ -62,5 +64,15 @@ public class WriterByDB {
     public void updateStoneByUser(String stone, String userName) {
         String queryString = String.format("update zodiac.users set stone = '%s' where user_name = '%s';", stone, userName);
         updateQuery(queryString);
+    }
+
+    public Coffe getCoffeByZodiacSing(ZodiacSing zodiacSing) {
+        String queryString = String.format("select * from zodiac.coffe where id_name_zodiac = %s;", zodiacSing.getIdZodiac());
+        List<Coffe> coffe = selectResult(queryString, Coffe.class);
+        if (coffe != null && !coffe.isEmpty()) {
+            return coffe.get(0);
+        } else {
+            return null;
+        }
     }
 }

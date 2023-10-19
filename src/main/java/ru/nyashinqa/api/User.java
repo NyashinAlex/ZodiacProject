@@ -49,7 +49,7 @@ public class User {
 
     public HashMap<String, String> updateInfoByUser(String userName, int dayOfBirth, Month monthOfBirth) {
         int countUser = db.checkUserForRegister(userName);
-        String zodiacByUser = zodiacSign.zodiacSignByMonth(monthOfBirth, dayOfBirth);
+        String zodiacByUser = zodiacSign.zodiacSignByMonth(monthOfBirth, dayOfBirth).getNameZodiac();
         String stoneByUser = zodiacSign.stoneByZodiac(zodiacByUser);
         String msg;
         String status;

@@ -5,6 +5,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.nyashinqa.api.User;
+import ru.nyashinqa.api.ZodiacSign;
+import ru.nyashinqa.db.Coffe;
+import ru.nyashinqa.enums.ZodiacSing;
 import ru.nyashinqa.models.*;
 
 import java.util.HashMap;
@@ -16,6 +19,7 @@ import java.util.HashMap;
 public class RegisterController {
 
     User user = new User();
+    ZodiacSign zodiacSing = new ZodiacSign();
 
     @Operation(summary = "Регистрация нового пользователя")
     @PostMapping("/registerUser")
@@ -37,12 +41,17 @@ public class RegisterController {
     @PutMapping("/updateZodiacByUser")
     public UserFullResponse updateZodiacByUser(@RequestBody UserUpdateRequest userUpdateRequest) {
         HashMap<String, String> msg = user.updateInfoByUser(userUpdateRequest.getUserName(), userUpdateRequest.getDayOfBirth(), userUpdateRequest.getMonthOfBirth());
+        ZodiacSing zodiac = zodiacSing.zodiacSignByMonth(userUpdateRequest.getMonthOfBirth(), userUpdateRequest.getDayOfBirth());
+        Coffe coffe = zodiacSing.getCoffeByZodiacSing(zodiac);
+        CoffeZodiacResponse coffeZodiacResponse = new CoffeZodiacResponse(coffe.getCoffe(), coffe.getDesc());
+
         UserFullResponse userFullResponse = new UserFullResponse(
                 userUpdateRequest.getUserName(),
                 msg.get("status"),
                 msg.get("msg"),
                 msg.get("stoneByUser"),
-                msg.get("zodiacByUser"));
+                msg.get("zodiacByUser"),
+                coffeZodiacResponse);
         return userFullResponse;
     }
 }
